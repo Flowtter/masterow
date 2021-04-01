@@ -1,6 +1,8 @@
 package api
 
 import (
+	"os"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -15,5 +17,5 @@ func RunRouter() {
 	r.Use(middleware.CORS())
 
 	handleRanks(r)
-	r.Start(":8080")
+	r.Start(":" + os.Getenv("PORT"))
 }

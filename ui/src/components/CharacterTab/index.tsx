@@ -20,33 +20,35 @@ type ArrayCharacter = {
 
 function FieldTab(props: FieldTabProps) {
     var max = props.max;
-    if (max == undefined) {
+    if (!max) {
         max = 100;
     }
     var inverted = props.inverted;
 
-    if (props.bold != undefined) {
+    if (props.bold !== undefined) {
         var value: number | undefined = parseFloat(props.bold.toFixed(2));
     } else {
         value = undefined;
     }
+
+    var progressBar: JSX.Element | null;
     
     if (inverted) {
         var bold = props.bold;
-        if (bold == undefined) {
+        if (bold === undefined) {
             bold = 9;
         }
         bold = 18 - bold * 1.9
         if (bold < 0) {
             bold = 0;
         }
-        var progressBar = props.progressBar ?
+        progressBar = props.progressBar ?
             <div className={[stylesBar.progressBar, styles.progressBar].join(' ')}>
                 <ProgressBar animated now={bold} max={9} />
             </div>
             : null;
     } else {
-        var progressBar = props.progressBar ? <div className={[stylesBar.progressBar, styles.progressBar].join(' ')}>
+        progressBar = props.progressBar ? <div className={[stylesBar.progressBar, styles.progressBar].join(' ')}>
             <ProgressBar animated now={value} max={max} />
         </div> : null;
     }
@@ -128,7 +130,7 @@ function Character(props: CharacterProps) {
                             info="damage"
                             max={18000}
                         />
-                        {props.healing != 0 && <FieldTab
+                        {props.healing !== 0 && <FieldTab
                             progressBar={true}
                             bold={props.healing}
                             info="healing"

@@ -265,7 +265,11 @@ func getRanksHandler(c echo.Context) error {
 	playerStats, err := ovrstat.PCStats(id)
 
 	if err != nil {
-		return c.JSON(http.StatusNotFound, "not found")
+		return c.JSON(http.StatusNotFound, "Account not found.")
+	}
+
+	if playerStats.Private {
+		return c.JSON(http.StatusNotFound, "Account is private.")
 	}
 
 	query := struct {

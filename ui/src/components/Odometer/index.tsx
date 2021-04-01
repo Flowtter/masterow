@@ -21,10 +21,10 @@ export default function Odometer(props: Props) {
 
     var value = parseFloat(props.value.toFixed(2));
 
-    if (props.width == undefined) {
+    if (props.width === undefined) {
         width = 225
     }
-    if (props.height == undefined) {
+    if (props.height === undefined) {
         height = 150
     }
 

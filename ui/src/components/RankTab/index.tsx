@@ -1,10 +1,8 @@
-import styles from './ranktab.module.scss'
-import stylesBar from './progressbar.module.scss'
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import Tab from '../Tab'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { RankInfo } from '../../types/rank_info'
+import Tab from '../Tab'
+import stylesBar from './progressbar.module.scss'
+import styles from './ranktab.module.scss'
 
 type Props = {
     type: "damage" | "tank" | "support" | "open queue"

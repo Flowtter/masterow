@@ -1,17 +1,24 @@
-import styles from './researchtab.module.scss'
 import axios from 'axios';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../Button";
 import Tab from '../Tab';
+import styles from './researchtab.module.scss';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 type Props = {
     setData: any
 }
 
+
 function Research(props: Props) {
     const [username, setUsername] = useState<string>("tagri-2865");
     const [checked, setChecked] = useState(true);
+
+
+  const notify = (err: string) => toast.error(err);
 
     function backend(e: any) {
         e.preventDefault();
@@ -20,13 +27,17 @@ function Research(props: Props) {
                 "competitive": checked
             }
         }).then(response => {
-            props.setData(response.data)
-        });
+            props.setData(response.data);
+        }).catch(err => {
+            notify(err.response.data)
+        })
+        ;
     }
 
 
     return (
         <div>
+            <ToastContainer />
             <form onSubmit={backend}>
                 <input 
                     className={styles.form}

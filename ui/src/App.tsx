@@ -1,14 +1,14 @@
-import styles from './app.module.scss'
-import Panel from './components/Panel'
-import OverallPerformanceTab from './components/OverallPerformanceTab'
-import RankTab from './components/RankTab';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { RankInfo } from './types/rank_info';
-import { OverallPerformances } from './types/overall_performances';
+import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import styles from './app.module.scss';
 import CharacterTab from './components/CharacterTab';
-import { CharacterProps } from './types/character';
+import OverallPerformanceTab from './components/OverallPerformanceTab';
+import Panel from './components/Panel';
+import RankTab from './components/RankTab';
 import ResearchTab from './components/ResearchTab';
+import { CharacterProps } from './types/character';
+import { OverallPerformances } from './types/overall_performances';
+import { RankInfo } from './types/rank_info';
 
 type Data = {
 	rating: RankInfo
@@ -17,16 +17,16 @@ type Data = {
 }
 
 function App() {
-	const[data, setData] = useState<Data>();
+	const [data, setData] = useState<Data>();
 
 	return (
 		<div>
 			<div className={styles.containerPannel}>
 				<Panel
 					position="left">
-						<ResearchTab 
-							setData={setData}
-						/>
+					<ResearchTab
+						setData={setData}
+					/>
 					{data && <RankTab
 						{...data.rating}
 					/>}

@@ -1,5 +1,4 @@
 .split {
-    width: 40vw;
     margin-top: 1%;
     &.left {
         width: 25%;
@@ -9,5 +8,19 @@
     &.right {
         width: 67%;
         margin-right: 3%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .split {
+        &.left {
+            width: 100% !important;
+            margin-right: 0%;
+            margin-left: 0%;
+        }
+        &.right {
+            width: 100% !important;
+            margin-right: 0%;
+        }
     }
 }

@@ -14,29 +14,40 @@ type FieldTabProps = {
     inverted?: boolean
 }
 
+type ArrayCharacter = {
+    array: Array<CharacterProps>
+}
+
 function FieldTab(props: FieldTabProps) {
     var max = props.max;
     if (max == undefined) {
         max = 100;
     }
     var inverted = props.inverted;
-    if (inverted == true) {
-        var bold = props.bold
+
+    if (props.bold != undefined) {
+        var value: number | undefined = parseFloat(props.bold.toFixed(2));
+    } else {
+        value = undefined;
+    }
+    
+    if (inverted) {
+        var bold = props.bold;
         if (bold == undefined) {
-            bold = 9
+            bold = 9;
         }
-        bold = 18 - bold*1.9
+        bold = 18 - bold * 1.9
         if (bold < 0) {
-            bold = 0
+            bold = 0;
         }
-        var progressBar = props.progressBar ? 
-        <div className={[stylesBar.progressBar, styles.progressBar].join(' ')}>
-            <ProgressBar animated now={bold} max={9} />
-        </div> 
-        : null;
+        var progressBar = props.progressBar ?
+            <div className={[stylesBar.progressBar, styles.progressBar].join(' ')}>
+                <ProgressBar animated now={bold} max={9} />
+            </div>
+            : null;
     } else {
         var progressBar = props.progressBar ? <div className={[stylesBar.progressBar, styles.progressBar].join(' ')}>
-            <ProgressBar animated now={props.bold} max={max} />
+            <ProgressBar animated now={value} max={max} />
         </div> : null;
     }
 
@@ -44,7 +55,7 @@ function FieldTab(props: FieldTabProps) {
 
     return (
         <div className={styles.fieldContainer}>
-            <p className={styles.bold}>{props.bold}{props.additionnalBold}</p>
+            <p className={styles.bold}>{value}{props.additionnalBold}</p>
             {progressBar}
             <p className={styles.info}>{props.info}</p>
         </div>
@@ -57,18 +68,13 @@ function Character(props: CharacterProps) {
             <div className={styles.splitContainer}>
                 <div className={styles.split}>
                     <div className={styles.name}>
-                        <p>{props.name}</p>
+                            <p className={styles.bold}>{props.name}</p>
                     </div>
                     <FieldTab
                         progressBar={true}
                         bold={props.onfire}
                         additionnalBold="%"
                         info="on fire"
-                    />
-                    <FieldTab
-                        progressBar={true}
-                        bold={props.timeplayed}
-                        info="time played"
                     />
                 </div>
                 <div className={styles.split}>
@@ -79,13 +85,16 @@ function Character(props: CharacterProps) {
                             info="winrate"
                             additionnalBold="%"
                         />
-                        <p className={styles.blank}></p>
-                        <div className={styles.subsplit}>
-                            <p>Name</p>
-                        </div>
-                        <div className={styles.subsplit}>
-                            <p>Name</p>
-                        </div>
+                        <FieldTab
+                            progressBar={false}
+                            additionnalBold={props.records}
+                            info="records"
+                        />
+                        <FieldTab
+                            progressBar={false}
+                            bold={props.goldpergame}
+                            info="gold/game"
+                        />
                     </div>
                 </div>
             </div>
@@ -178,25 +187,28 @@ function Character(props: CharacterProps) {
     );
 }
 
-// function AllCharacters() {
-//     return (
-//         <div>
-//             <Character />
-//              <hr />
-//             <Character />
-//             <hr />
-//             <Character />
-//         </div>
-//     );
-// }
+function AllCharacters(props: ArrayCharacter) {
+    var value = props.array.map(character => {
+        return (
+            <div key={character.name}>
+                <Character
+                    {...character}
+                />
+                <hr />
+            </div>);
+    })
+    return (<div>{value}</div>
+    );
+}
 
-export default function CharacterTab(props: CharacterProps ) {
+export default function CharacterTab(props: ArrayCharacter) {
+    console.log(props);
     return (
         <Tab
             title="Character Tab"
             component={
-                <Character
-                    {...props}
+                <AllCharacters
+                    array={props.array}
                 />
             }
         />

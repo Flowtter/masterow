@@ -22,6 +22,14 @@ export default function OverallPannelTab(props: OverallPerformances) {
                     name="eliminations per life"
                 />
             </div>
+            <div className={styles.odometer}>
+                <Odometer
+                    min={0}
+                    value={props.cards}
+                    max={1}
+                    name="cards per game"
+                />
+            </div>
         </div>
 
     return (

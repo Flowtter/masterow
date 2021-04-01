@@ -1,6 +1,7 @@
 .container {
     width: 100%;
     display: inline-flex;
+    flex-wrap: wrap;
 }
 
 .odometer {

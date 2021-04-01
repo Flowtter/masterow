@@ -31,6 +31,7 @@
     font-size: medium;
     padding: 0px;
     margin: 0px;
+    word-wrap: break-word;
 }
 
 .info {
@@ -40,6 +41,7 @@
     padding: 0px;
     margin: 0px;
     margin-bottom: 5px;
+    word-wrap: break-word;
 }
 
 .progressBar {
@@ -68,4 +70,22 @@
     float: left;
     margin-left: -2.5%;
     margin-top: -18px;
+}
+
+@media screen and (max-width: 831px) and (min-width: 720px) {
+    .vl {
+        height: 152px;
+    }
+}
+
+@media screen and (max-width: 720px) and (min-width: 461px) {
+    .vl {
+        height: 172px;
+    }
+}
+
+@media screen and (max-width: 461px) {
+    .vl {
+        display: none;
+    }
 }

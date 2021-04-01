@@ -19,26 +19,26 @@ export default function Odometer(props: Props) {
     if (props.value > props.max)
         max = props.value;
 
-
+    var value = parseFloat(props.value.toFixed(2));
 
     if (props.width == undefined) {
         width = 225
     }
     if (props.height == undefined) {
-        height = 225
+        height = 150
     }
 
     return (
         <ReactSpeedometer
             forceRender={true}
             maxSegmentLabels={1}
-            customSegmentStops={[min, props.value, max]}
+            customSegmentStops={[min, value, max]}
             segmentColors={['#f5a52a', '#141b23']}
             needleColor={'#f0f0f0'}
-            currentValueText={`${props.name}: ${props.value}`}
+            currentValueText={`${props.name}: ${value}`}
             minValue={min}
             maxValue={max}
-            value={props.value}
+            value={value}
             textColor={'#f0f0f0'}
             needleHeightRatio={0.6}
             ringWidth={10}

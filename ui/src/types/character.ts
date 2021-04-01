@@ -15,4 +15,6 @@ export type CharacterProps = {
     finalblows: number
     solokills: number
     shielddamage: number
+    records: string
+    goldpergame: number
 }

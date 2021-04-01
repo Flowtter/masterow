@@ -10,3 +10,9 @@ hr {
     border-top: 3px solid $dark-black !important;
     margin-top: -5px !important;
 }
+
+@media screen and (max-width: 1000px) {
+    .containerPannel {
+        display: block;
+    }
+}

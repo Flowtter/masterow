@@ -1,0 +1,12 @@
+@import 'constants.scss';
+.containerPannel {
+    width: 100%;
+    display: inline-flex;
+}
+
+hr {
+    height: 0px;
+    border: none;
+    border-top: 3px solid $dark-black !important;
+    margin-top: -5px !important;
+}

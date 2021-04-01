@@ -1,0 +1,13 @@
+.split {
+    width: 40vw;
+    margin-top: 1%;
+    &.left {
+        width: 25%;
+        margin-right: 3%;
+        margin-left: 2%;
+    }
+    &.right {
+        width: 67%;
+        margin-right: 3%;
+    }
+}

@@ -1,0 +1,19 @@
+@import '../../constants.scss';
+.container {
+    width: 100%;
+    display: inline-flex;
+    font-weight: bold;
+    text-align: center;
+}
+
+.name {
+    text-transform: uppercase;
+    width: 35%;
+    margin-top: -3px;
+}
+
+.sr {
+    text-transform: uppercase;
+    width: 15%;
+    margin-top: -3px;
+}

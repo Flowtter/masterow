@@ -1,0 +1,71 @@
+@import "../../constants.scss";
+.splitContainer:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.split {
+    float: left;
+    width: 50%;
+}
+
+.subsplit {
+    float: left;
+    width: 33.33%;
+}
+
+.name {
+    float: left;
+    width: 31%;
+}
+
+.blank {
+    float: left;
+    width: 2.2%;
+}
+
+.bold {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: medium;
+    padding: 0px;
+    margin: 0px;
+}
+
+.info {
+    text-transform: uppercase;
+    color: $grey;
+    font-size: smaller;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.progressBar {
+    width: 90% !important;
+}
+
+.progressBar>:first-child {
+    height: 0.7rem;
+}
+
+.fieldContainer {
+    margin-left: 3%;
+    width: 28% !important;
+    float: left;
+}
+
+.fieldsContainer:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.vl {
+    border-left: 5px solid $dark-black;
+    height: 134px;
+    float: left;
+    margin-left: -2.5%;
+    margin-top: -18px;
+}

@@ -1,0 +1,15 @@
+@import '../../constants.scss';
+.tab {
+    width: 100%;
+    border-radius: 5px;
+    background-color: $light-black;
+}
+
+.mainTitle {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.children {
+    margin: 25px;
+}

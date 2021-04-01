@@ -1,0 +1,14 @@
+@import '../../constants.scss';
+.progressBar {
+    width: 65%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.progressBar div:first-child {
+    background-color: $light-yellow !important;
+}
+
+.progressBar>div:first-child {
+    background-color: $white !important;
+}

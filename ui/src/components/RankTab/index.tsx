@@ -17,7 +17,6 @@ type Props = {
 
 function Rank(props: Props) {
     var value: number = props.rank / props.maxRank * 100;
-    console.log(props.maxRank);
     return (
         <div className={styles.container} >
             <p className={styles.name}>{props.type}</p>
@@ -33,7 +32,6 @@ function AllRanks(props: RankInfo) {
     var maxRank = 0;
 
     maxRank = Math.max(props.damage, props.tank, props.support, props.openqueue)
-    console.log(maxRank)
 
     return (
         <div>

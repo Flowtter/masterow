@@ -7,18 +7,21 @@ import axios from 'axios';
 import { RankInfo } from './types/rank_info';
 import { OverallPerformances } from './types/overall_performances';
 import CharacterTab from './components/CharacterTab';
+import { CharacterProps } from './types/character';
 
 function App() {
 
 	const [rank, setRank] = useState<RankInfo>();
 	const [overallPerformance, setOverallPerformance] = useState<OverallPerformances>();
+	const [characters, setCharacters] = useState<CharacterProps[]>();
 
 	useEffect(() => {
-        axios.get("http://localhost:8080/ranks").then(Response => {
-            setRank(Response.data.rating);
-            setOverallPerformance(Response.data.overallperformance);
-        })
-    }, []);
+		axios.get("http://localhost:8080/ranks").then(Response => {
+			setRank(Response.data.rating);
+			setOverallPerformance(Response.data.overallperformance);
+			setCharacters(Response.data.characters)
+		})
+	}, []);
 
 
 	return (
@@ -33,7 +36,14 @@ function App() {
 				</Panel>
 				<Panel
 					position="right">
-					<CharacterTab />	
+					{characters && 
+					characters.map(character => {
+						return <CharacterTab 
+							{...character}
+						/>
+						})
+					}
+
 					{overallPerformance && <OverallPerformanceTab
 						{...overallPerformance}
 					/>}

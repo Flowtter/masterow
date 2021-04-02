@@ -1,6 +1,5 @@
 import styles from './tab.module.scss'
 
-// nuf
 type Props = {
     title: string
     component: JSX.Element

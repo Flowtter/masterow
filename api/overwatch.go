@@ -280,6 +280,16 @@ func getRanksHandler(c echo.Context) error {
 
 	competitiveMode := query.Competitive
 
+	if competitiveMode {
+		if len(playerStats.CompetitiveStats.CareerStats) == 0 {
+			return c.JSON(http.StatusNotFound, "Account needs to play in this gamemode.")
+		}
+	} else {
+		if len(playerStats.QuickPlayStats.CareerStats) == 0 {
+			return c.JSON(http.StatusNotFound, "Account needs to play in this gamemode.")
+		}
+	}
+
 	account := playerStats.QuickPlayStats
 	if competitiveMode {
 		account = playerStats.CompetitiveStats
